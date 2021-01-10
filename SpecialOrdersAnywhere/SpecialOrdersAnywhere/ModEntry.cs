@@ -40,7 +40,11 @@ namespace SpecialOrdersAnywhere
             // open the special orders board
             if (e.Button == this.config.HotKey)
             {
-                Game1.activeClickableMenu = new StardewValley.Menus.SpecialOrdersBoard();
+                var date = SDate.Now();
+                if (this.config.UseBeforeUnlocked || date.DaysSinceStart >= 57)
+                {
+                    Game1.activeClickableMenu = new StardewValley.Menus.SpecialOrdersBoard();
+                }
             }
         }
     }
