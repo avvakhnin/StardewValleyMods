@@ -1,0 +1,5 @@
+/Users/nicc/dev/stardewMods/SpecialOrdersAnywhere/SpecialOrdersAnywhere/SpecialOrdersAnywhere/obj/Debug/SpecialOrdersAnywhere.csproj.CoreCompileInputs.cache
+/Users/nicc/dev/stardewMods/SpecialOrdersAnywhere/SpecialOrdersAnywhere/SpecialOrdersAnywhere/bin/Debug/SpecialOrdersAnywhere.dll
+/Users/nicc/dev/stardewMods/SpecialOrdersAnywhere/SpecialOrdersAnywhere/SpecialOrdersAnywhere/bin/Debug/SpecialOrdersAnywhere.pdb
+/Users/nicc/dev/stardewMods/SpecialOrdersAnywhere/SpecialOrdersAnywhere/SpecialOrdersAnywhere/obj/Debug/SpecialOrdersAnywhere.dll
+/Users/nicc/dev/stardewMods/SpecialOrdersAnywhere/SpecialOrdersAnywhere/SpecialOrdersAnywhere/obj/Debug/SpecialOrdersAnywhere.pdb

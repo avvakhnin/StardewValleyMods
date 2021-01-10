@@ -1,0 +1,25 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workbench ActiveDocument="SpecialOrdersAnywhere/SpecialOrdersAnywhereConfig.cs">
+    <Files>
+      <File FileName="SpecialOrdersAnywhere/MyClass.cs" Line="5" Column="24" />
+      <File FileName="SpecialOrdersAnywhere/SpecialOrdersAnywhereConfig.cs" Line="6" Column="83" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="SpecialOrdersAnywhere" expanded="True">
+            <Node name="SpecialOrdersAnywhere" expanded="True">
+              <Node name="SpecialOrdersAnywhereConfig.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
