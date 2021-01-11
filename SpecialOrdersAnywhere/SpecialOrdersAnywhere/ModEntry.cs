@@ -38,13 +38,21 @@ namespace SpecialOrdersAnywhere
                 return;
 
             // open the special orders board
-            if (e.Button == this.config.HotKey)
+            if (e.Button == this.config.SpecialOrdersHotKey)
             {
                 var date = SDate.Now();
-                if (this.config.UseBeforeUnlocked || date.DaysSinceStart >= 57)
+                if (this.config.UseSpecialOrdersBeforeUnlocked || date.DaysSinceStart >= 57)
                 {
                     Game1.activeClickableMenu = new StardewValley.Menus.SpecialOrdersBoard();
                 }
+            }
+            else if (e.Button == this.config.CalendarHotKey)
+            {
+                Game1.activeClickableMenu = new StardewValley.Menus.Billboard();
+            }
+            else if (e.Button == this.config.DailyQuestHotKey)
+            {
+                Game1.activeClickableMenu = new StardewValley.Menus.Billboard(true);
             }
         }
     }

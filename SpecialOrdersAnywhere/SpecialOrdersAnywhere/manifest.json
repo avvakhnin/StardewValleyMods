@@ -1,10 +1,10 @@
 ﻿{
   "Name": "SpecialOrdersAnywhere",
   "Author": "AcidicNic",
-  "Version": "1.0.0",
-  "Description": "Check the special orders board anywhere with a button press. (default: B)",
+  "Version": "1.0.3",
+  "Description": "Check your calendar, daily quest board, and special orders board anywhere with a button press.",
   "UniqueID": "acidicNic.SpecialOrdersAnywhere",
   "EntryDll": "SpecialOrdersAnywhere.dll",
   "MinimumApiVersion": "3.0.0",
-  "UpdateKeys": []
+  "UpdateKeys": [ "Nexus:7588" ]
 }
