@@ -38,19 +38,25 @@ namespace SpecialOrdersAnywhere
                 return;
 
             // open the special orders board
-            if (e.Button == this.config.SpecialOrdersHotKey)
+            if (e.Button == this.config.SpecialOrdersHotKey && this.config.EnableSpecialOrdersHotKey)
             {
-                var date = SDate.Now();
-                if (this.config.UseSpecialOrdersBeforeUnlocked || date.DaysSinceStart >= 57)
+                if (this.config.UseSpecialOrdersBeforeUnlocked || SpecialOrder.IsSpecialOrdersBoardUnlocked())
                 {
                     Game1.activeClickableMenu = new StardewValley.Menus.SpecialOrdersBoard();
                 }
             }
-            else if (e.Button == this.config.CalendarHotKey)
+            else if (e.Button == this.config.QiSpecialOrdersHotKey && this.config.EnableQiSpecialOrdersHotKey)
+            {
+                if (this.config.UseQiSpecialOrdersBeforeUnlocked || Game1.netWorldState.Value.GoldenWalnutsFound.Value >= 100)
+                {
+                    Game1.activeClickableMenu = new StardewValley.Menus.SpecialOrdersBoard("Qi");
+                }
+            }
+            else if (e.Button == this.config.CalendarHotKey && this.config.EnableCalendarHotkey)
             {
                 Game1.activeClickableMenu = new StardewValley.Menus.Billboard();
             }
-            else if (e.Button == this.config.DailyQuestHotKey)
+            else if (e.Button == this.config.DailyQuestHotKey && this.config.EnableDailyQuestHotKey)
             {
                 Game1.activeClickableMenu = new StardewValley.Menus.Billboard(true);
             }
