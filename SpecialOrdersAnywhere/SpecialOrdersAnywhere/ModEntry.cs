@@ -1,9 +1,8 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using StardewModdingAPI;
+﻿using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley;
 using StardewValley.Menus;
+using System.Collections.Generic;
 
 namespace SpecialOrdersAnywhere
 {
@@ -41,72 +40,116 @@ namespace SpecialOrdersAnywhere
             if (e.Button == this.config.ActivateKey)
             {
                 if (Context.CanPlayerMove)
-                    Game1.activeClickableMenu = new Billboard();
+                {
+                    if (this.config.enableCalendar)
+                        Game1.activeClickableMenu = new Billboard();
+                    else if (this.config.enableDailyQuests)
+                        Game1.activeClickableMenu = new Billboard(true);
+                    else if (this.config.SpecialOrdersBeforeUnlocked || SpecialOrder.IsSpecialOrdersBoardUnlocked())
+                        Game1.activeClickableMenu = new SpecialOrdersBoard();
+                    else if (this.config.QiBeforeUnlocked || Game1.netWorldState.Value.GoldenWalnutsFound.Value >= 100)
+                        Game1.activeClickableMenu = new SpecialOrdersBoard("Qi");
+                }
                 else if (Game1.activeClickableMenu is SpecialOrdersBoard || Game1.activeClickableMenu is Billboard)
                     Game1.exitActiveMenu();
             }
-            // CycleRight
-            else if (e.Button == this.config.CycleRightKey && !Context.IsPlayerFree)
+            // CycleRight & LeftCycle
+            else if ((e.Button == this.config.CycleRightKey || e.Button == this.config.CycleLeftKey) && !Context.IsPlayerFree)
             {
+                string active = "";
                 if (Game1.activeClickableMenu is Billboard)
                 {
                     if ((Game1.activeClickableMenu as Billboard).calendarDays != null)
-                        Game1.activeClickableMenu = new Billboard(true);
+                        active = "cal";
                     else
-                    {
-                        if (this.config.SpecialOrdersBeforeUnlocked || SpecialOrder.IsSpecialOrdersBoardUnlocked())
-                        {
-                            Game1.activeClickableMenu = new SpecialOrdersBoard();
-                        }
-                        else if (this.config.QiBeforeUnlocked || Game1.netWorldState.Value.GoldenWalnutsFound.Value >= 100)
-                        {
-                            Game1.activeClickableMenu = new SpecialOrdersBoard("Qi");
-                        }
-                        else
-                            Game1.activeClickableMenu = new Billboard();
-                    }
-                }
-                else if (Game1.activeClickableMenu is SpecialOrdersBoard)
-                {
-                    if ((Game1.activeClickableMenu as SpecialOrdersBoard).boardType == "")
-                    {
-                        if (this.config.QiBeforeUnlocked || Game1.netWorldState.Value.GoldenWalnutsFound.Value >= 100)
-                        {
-                            Game1.activeClickableMenu = new SpecialOrdersBoard("Qi");
-                            return;
-                        }
-                    }
-                    Game1.activeClickableMenu = new Billboard();
-                }
-            }
-            // Cycleleft
-            else if (e.Button == this.config.CycleLeftKey && !Context.IsPlayerFree)
-            {
-                if (Game1.activeClickableMenu is Billboard)
-                {
-                    if ((Game1.activeClickableMenu as Billboard).calendarDays != null)
-                    {
-                        if (this.config.SpecialOrdersBeforeUnlocked || SpecialOrder.IsSpecialOrdersBoardUnlocked())
-                            Game1.activeClickableMenu = new SpecialOrdersBoard();
-                        else if (this.config.QiBeforeUnlocked || Game1.netWorldState.Value.GoldenWalnutsFound.Value >= 100)
-                            Game1.activeClickableMenu = new SpecialOrdersBoard("Qi");
-                        else
-                            Game1.activeClickableMenu = new Billboard(true);
-                    }
-                    else
-                        Game1.activeClickableMenu = new Billboard();
+                        active = "dq";
                 }
                 else if (Game1.activeClickableMenu is SpecialOrdersBoard)
                 {
                     if ((Game1.activeClickableMenu as SpecialOrdersBoard).boardType == "Qi")
+                        active = "qi";
+                    else
+                        active = "so";
+                }
+
+                if (active == "")
+                    return;
+
+                LinkedList<string> menuList = new LinkedList<string>();
+                if (this.config.enableCalendar)
+                    menuList.AddLast("cal");
+                if (this.config.enableDailyQuests)
+                    menuList.AddLast("dq");
+                if (this.config.SpecialOrdersBeforeUnlocked || SpecialOrder.IsSpecialOrdersBoardUnlocked())
+                    menuList.AddLast("so");
+                if (this.config.QiBeforeUnlocked || Game1.netWorldState.Value.GoldenWalnutsFound.Value >= 100)
+                    menuList.AddLast("qi");
+
+                string nextMenu = "";
+
+                if (menuList.Count == 1)
+                    return;
+                else if (menuList.Count == 2)
+                {
+                    if (menuList.First.Value == active)
+                        nextMenu = menuList.Last.Value;
+                    else
+                        nextMenu = menuList.First.Value;
+                }
+                else
+                {
+                    if (e.Button == this.config.CycleRightKey)
                     {
-                        if (this.config.SpecialOrdersBeforeUnlocked || SpecialOrder.IsSpecialOrdersBoardUnlocked())
+                        var menuNode = menuList.First;
+                        while (menuNode != null)
                         {
-                            Game1.activeClickableMenu = new SpecialOrdersBoard();
-                            return;
+                            if (menuNode.Value == active)
+                            {
+                                if (menuNode.Next != null)
+                                    nextMenu = menuNode.Next.Value;
+                                else
+                                    nextMenu = menuList.First.Value;
+                                menuNode = null;
+                            }
+                            else
+                                menuNode = menuNode.Next;
                         }
                     }
-                    Game1.activeClickableMenu = new Billboard(true);
+                    else
+                    {
+                        var menuNode = menuList.Last;
+                        while (menuNode != null)
+                        {
+                            if (menuNode.Value == active)
+                            {
+                                if (menuNode.Previous != null)
+                                    nextMenu = menuNode.Previous.Value;
+                                else
+                                    nextMenu = menuList.Last.Value;
+                                menuNode = null;
+                            }
+                            else
+                                menuNode = menuNode.Previous;
+                        }
+                    }
+                }
+
+                switch (nextMenu)
+                {
+                    case "cal":
+                        Game1.activeClickableMenu = new Billboard();
+                        break;
+                    case "dq":
+                        Game1.activeClickableMenu = new Billboard(true);
+                        break;
+                    case "so":
+                        Game1.activeClickableMenu = new SpecialOrdersBoard();
+                        break;
+                    case "qi":
+                        Game1.activeClickableMenu = new SpecialOrdersBoard("Qi");
+                        break;
+                    default:
+                        return;
                 }
             }
         }

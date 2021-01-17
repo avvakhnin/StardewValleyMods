@@ -9,5 +9,8 @@ namespace SpecialOrdersAnywhere
 
         public Boolean SpecialOrdersBeforeUnlocked { get; set; } = false;
         public Boolean QiBeforeUnlocked { get; set; } = false;
+
+        public Boolean enableCalendar { get; set; } = true;
+        public Boolean enableDailyQuests { get; set; } = true;
     }
 }

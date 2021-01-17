@@ -1,7 +1,7 @@
 ﻿{
   "Name": "SpecialOrdersAnywhere",
   "Author": "AcidicNic",
-  "Version": "1.0.6",
+  "Version": "2.0.0",
   "Description": "View your Special Orders, Qi's Special Orders, Calendar, and Daily Quests anywhere.",
   "UniqueID": "acidicNic.SpecialOrdersAnywhere",
   "EntryDll": "SpecialOrdersAnywhere.dll",
