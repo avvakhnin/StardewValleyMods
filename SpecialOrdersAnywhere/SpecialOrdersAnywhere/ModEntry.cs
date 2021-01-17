@@ -33,11 +33,11 @@ namespace SpecialOrdersAnywhere
         /// <param name="e">The event data.</param>
         private void OnButtonPressed(object sender, ButtonPressedEventArgs e)
         {
-            // ignore if player hasn't loaded a save yet
-            if (!Context.IsWorldReady)
+            // ignore if player hasn't loaded a save yet or player isn't free
+            if (!Context.CanPlayerMove)
                 return;
 
-            // open the special orders board
+
             if (e.Button == this.config.SpecialOrdersHotKey && this.config.EnableSpecialOrdersHotKey)
             {
                 if (this.config.UseSpecialOrdersBeforeUnlocked || SpecialOrder.IsSpecialOrdersBoardUnlocked())

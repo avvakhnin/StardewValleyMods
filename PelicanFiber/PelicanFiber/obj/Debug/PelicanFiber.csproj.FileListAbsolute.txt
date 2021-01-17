@@ -1,0 +1,6 @@
+/Users/nicc/dev/StardewMods/PelicanFiber/PelicanFiber/bin/Debug/PelicanFiber.dll
+/Users/nicc/dev/StardewMods/PelicanFiber/PelicanFiber/bin/Debug/PelicanFiber.pdb
+/Users/nicc/dev/StardewMods/PelicanFiber/PelicanFiber/obj/Debug/PelicanFiber.csprojAssemblyReference.cache
+/Users/nicc/dev/StardewMods/PelicanFiber/PelicanFiber/obj/Debug/PelicanFiber.csproj.CoreCompileInputs.cache
+/Users/nicc/dev/StardewMods/PelicanFiber/PelicanFiber/obj/Debug/PelicanFiber.dll
+/Users/nicc/dev/StardewMods/PelicanFiber/PelicanFiber/obj/Debug/PelicanFiber.pdb
