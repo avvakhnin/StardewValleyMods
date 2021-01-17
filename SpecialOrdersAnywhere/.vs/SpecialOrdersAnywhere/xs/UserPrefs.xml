@@ -2,13 +2,17 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="SpecialOrdersAnywhere/ModEntry.cs">
     <Files>
       <File FileName="SpecialOrdersAnywhere/manifest.json" Line="11" Column="1" />
-      <File FileName="SpecialOrdersAnywhere/ModEntry.cs" Line="66" Column="1" />
-      <File FileName="SpecialOrdersAnywhere/SpecialOrdersAnywhereConfig.cs" Line="21" Column="1" />
+      <File FileName="SpecialOrdersAnywhere/SpecialOrdersAnywhereConfig.cs" Line="14" Column="1" />
+      <File FileName="SpecialOrdersAnywhere/ModEntry.cs" Line="10" Column="43" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="SpecialOrdersAnywhere" expanded="True" />
+          <Node name="SpecialOrdersAnywhere" expanded="True">
+            <Node name="SpecialOrdersAnywhere" expanded="True">
+              <Node name="ModEntry.cs" selected="True" />
+            </Node>
+          </Node>
         </State>
       </Pad>
     </Pads>

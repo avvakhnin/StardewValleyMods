@@ -2,15 +2,15 @@
 using Microsoft.Xna.Framework;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
-using StardewModdingAPI.Utilities;
 using StardewValley;
+using StardewValley.Menus;
 
 namespace SpecialOrdersAnywhere
 {
     /// <summary>The mod entry point.</summary>
     public class ModEntry : Mod
     {
-        private SpecialOrdersAnywhereConfig config;
+        private ModConfig config;
 
         /*********
         ** Public methods
@@ -19,7 +19,7 @@ namespace SpecialOrdersAnywhere
         /// <param name="helper">Provides simplified APIs for writing mods.</param>
         public override void Entry(IModHelper helper)
         {
-            this.config = helper.ReadConfig<SpecialOrdersAnywhereConfig>();
+            this.config = helper.ReadConfig<ModConfig>();
 
             helper.Events.Input.ButtonPressed += this.OnButtonPressed;
         }
@@ -33,32 +33,81 @@ namespace SpecialOrdersAnywhere
         /// <param name="e">The event data.</param>
         private void OnButtonPressed(object sender, ButtonPressedEventArgs e)
         {
-            // ignore if player hasn't loaded a save yet or player isn't free
-            if (!Context.CanPlayerMove)
+            // ignore if the world isn't loaded
+            if (!Context.IsWorldReady)
                 return;
 
-
-            if (e.Button == this.config.SpecialOrdersHotKey && this.config.EnableSpecialOrdersHotKey)
+            // ActivateKey
+            if (e.Button == this.config.ActivateKey)
             {
-                if (this.config.UseSpecialOrdersBeforeUnlocked || SpecialOrder.IsSpecialOrdersBoardUnlocked())
+                if (Context.CanPlayerMove)
+                    Game1.activeClickableMenu = new Billboard();
+                else if (Game1.activeClickableMenu is SpecialOrdersBoard || Game1.activeClickableMenu is Billboard)
+                    Game1.exitActiveMenu();
+            }
+            // CycleRight
+            else if (e.Button == this.config.CycleRightKey && !Context.IsPlayerFree)
+            {
+                if (Game1.activeClickableMenu is Billboard)
                 {
-                    Game1.activeClickableMenu = new StardewValley.Menus.SpecialOrdersBoard();
+                    if ((Game1.activeClickableMenu as Billboard).calendarDays != null)
+                        Game1.activeClickableMenu = new Billboard(true);
+                    else
+                    {
+                        if (this.config.SpecialOrdersBeforeUnlocked || SpecialOrder.IsSpecialOrdersBoardUnlocked())
+                        {
+                            Game1.activeClickableMenu = new SpecialOrdersBoard();
+                        }
+                        else if (this.config.QiBeforeUnlocked || Game1.netWorldState.Value.GoldenWalnutsFound.Value >= 100)
+                        {
+                            Game1.activeClickableMenu = new SpecialOrdersBoard("Qi");
+                        }
+                        else
+                            Game1.activeClickableMenu = new Billboard();
+                    }
+                }
+                else if (Game1.activeClickableMenu is SpecialOrdersBoard)
+                {
+                    if ((Game1.activeClickableMenu as SpecialOrdersBoard).boardType == "")
+                    {
+                        if (this.config.QiBeforeUnlocked || Game1.netWorldState.Value.GoldenWalnutsFound.Value >= 100)
+                        {
+                            Game1.activeClickableMenu = new SpecialOrdersBoard("Qi");
+                            return;
+                        }
+                    }
+                    Game1.activeClickableMenu = new Billboard();
                 }
             }
-            else if (e.Button == this.config.QiSpecialOrdersHotKey && this.config.EnableQiSpecialOrdersHotKey)
+            // Cycleleft
+            else if (e.Button == this.config.CycleLeftKey && !Context.IsPlayerFree)
             {
-                if (this.config.UseQiSpecialOrdersBeforeUnlocked || Game1.netWorldState.Value.GoldenWalnutsFound.Value >= 100)
+                if (Game1.activeClickableMenu is Billboard)
                 {
-                    Game1.activeClickableMenu = new StardewValley.Menus.SpecialOrdersBoard("Qi");
+                    if ((Game1.activeClickableMenu as Billboard).calendarDays != null)
+                    {
+                        if (this.config.SpecialOrdersBeforeUnlocked || SpecialOrder.IsSpecialOrdersBoardUnlocked())
+                            Game1.activeClickableMenu = new SpecialOrdersBoard();
+                        else if (this.config.QiBeforeUnlocked || Game1.netWorldState.Value.GoldenWalnutsFound.Value >= 100)
+                            Game1.activeClickableMenu = new SpecialOrdersBoard("Qi");
+                        else
+                            Game1.activeClickableMenu = new Billboard(true);
+                    }
+                    else
+                        Game1.activeClickableMenu = new Billboard();
                 }
-            }
-            else if (e.Button == this.config.CalendarHotKey && this.config.EnableCalendarHotkey)
-            {
-                Game1.activeClickableMenu = new StardewValley.Menus.Billboard();
-            }
-            else if (e.Button == this.config.DailyQuestHotKey && this.config.EnableDailyQuestHotKey)
-            {
-                Game1.activeClickableMenu = new StardewValley.Menus.Billboard(true);
+                else if (Game1.activeClickableMenu is SpecialOrdersBoard)
+                {
+                    if ((Game1.activeClickableMenu as SpecialOrdersBoard).boardType == "Qi")
+                    {
+                        if (this.config.SpecialOrdersBeforeUnlocked || SpecialOrder.IsSpecialOrdersBoardUnlocked())
+                        {
+                            Game1.activeClickableMenu = new SpecialOrdersBoard();
+                            return;
+                        }
+                    }
+                    Game1.activeClickableMenu = new Billboard(true);
+                }
             }
         }
     }

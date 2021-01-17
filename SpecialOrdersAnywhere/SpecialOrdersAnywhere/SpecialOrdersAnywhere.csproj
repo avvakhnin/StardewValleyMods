@@ -37,7 +37,7 @@
   <ItemGroup>
     <Compile Include="ModEntry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SpecialOrdersAnywhereConfig.cs" />
+    <Compile Include="ModConfig.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
