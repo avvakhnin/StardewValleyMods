@@ -1,6 +1,6 @@
 # Stardew Valley Mods
 
-## Special Orders Anywhere
+## [Special Orders Anywhere](https://www.nexusmods.com/stardewvalley/mods/7588)
 Check your calendar, daily quest board, and special orders board anywhere with a button press.
 
 ### Install
