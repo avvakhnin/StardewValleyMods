@@ -3,13 +3,13 @@
 ## Special Orders Anywhere
 Check your calendar, daily quest board, and special orders board anywhere with a button press.
 
-##### Install
+### Install
 - Install the latest version of SMAPI.
 - Download the zip from the [releases](https://github.com/AcidicNic/StardewValleyMods/releases/tag/1.0.5) page or [NexusMods](https://www.nexusmods.com/stardewvalley/mods/7588).
 - Extract the zip file into your Mods folder.
     - You can find the Mods folder using steam by right clicking Stardew Valley, then clicking Properties > Local Files > Browse
 
-##### Config
+### Config
 Here's a [list of valid options](https://stardewcommunitywiki.com/Modding:Player_Guide/Key_Bindings#Available_bindings) for the hotkey options, for your keyboard or controller.
 
 | Config Variables | Valid Inputs | Description |
@@ -25,13 +25,13 @@ This is just an updated version of the original Pelican Fiber mod created by Pat
  - [Original Github Repo](https://github.com/jdusbabek/stardewvalley)
  - [Original NexusMods Listing](https://www.nexusmods.com/stardewvalley/mods/631)
 
-##### Install
+### Install
 - Install the latest version of SMAPI.
 - Download the zip from the [releases](https://github.com/AcidicNic/StardewValleyMods/releases/tag/1.0.5) page.
 - Extract the zip file into your Mods folder.
     - You can find the Mods folder using steam by right clicking Stardew Valley, then clicking Properties > Local Files > Browse
 
-##### Config
+### Config
 Here's a [list of valid options](https://stardewcommunitywiki.com/Modding:Player_Guide/Key_Bindings#Available_bindings) for the `KeyBind` config var.
 
 I haven't changed any config settings, so check out [the configuration section on the original NexusMods page](https://www.nexusmods.com/stardewvalley/mods/631?tab=description).
