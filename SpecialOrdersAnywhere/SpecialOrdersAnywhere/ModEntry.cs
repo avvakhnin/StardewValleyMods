@@ -75,7 +75,7 @@ namespace AcidicNic.SpecialOrdersAnywhere {
             // menu settings desc
             configMenu.AddParagraph(
                 mod: this.ModManifest,
-                text: () => "@=> Calendar @-> Daily Quests @-> Special Orders @-> Qi's Special Orders @-> Journal @->"
+                text: () => "@—> Calendar @—> Daily Quests @—> Special Orders @—> Qi's Special Orders @—> Journal @—>"
             );
             // enable calendar bool config
             configMenu.AddBoolOption(
