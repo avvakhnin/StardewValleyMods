@@ -9,3 +9,7 @@
 /Users/nicc/dev/StardewMods/SpecialOrdersAnywhere/SpecialOrdersAnywhere/obj/Debug/SpecialOrdersAnywhere.pdb
 /Users/nicc/dev/StardewMods/SpecialOrdersAnywhere/SpecialOrdersAnywhere/bin/Debug/SpecialOrdersAnywhere.dll
 /Users/nicc/dev/StardewMods/SpecialOrdersAnywhere/SpecialOrdersAnywhere/bin/Debug/SpecialOrdersAnywhere.pdb
+C:\Users\nic40\dev\StardewValleyMods\SpecialOrdersAnywhere\SpecialOrdersAnywhere\bin\Debug\SpecialOrdersAnywhere.dll
+C:\Users\nic40\dev\StardewValleyMods\SpecialOrdersAnywhere\SpecialOrdersAnywhere\obj\Debug\SpecialOrdersAnywhere.csproj.AssemblyReference.cache
+C:\Users\nic40\dev\StardewValleyMods\SpecialOrdersAnywhere\SpecialOrdersAnywhere\obj\Debug\SpecialOrdersAnywhere.csproj.CoreCompileInputs.cache
+C:\Users\nic40\dev\StardewValleyMods\SpecialOrdersAnywhere\SpecialOrdersAnywhere\obj\Debug\SpecialOrdersAnywhere.dll
