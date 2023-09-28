@@ -159,7 +159,7 @@ namespace AcidicNic.SpecialOrdersAnywhere {
                         Game1.activeClickableMenu = new QuestLog();
                 }
                 // close menu
-                else if (Game1.activeClickableMenu is SpecialOrdersBoard || Game1.activeClickableMenu is Billboard)
+                else if (Game1.activeClickableMenu is SpecialOrdersBoard || Game1.activeClickableMenu is Billboard || Game1.activeClickableMenu is QuestLog)
                     Game1.exitActiveMenu();
                 return;
             }
