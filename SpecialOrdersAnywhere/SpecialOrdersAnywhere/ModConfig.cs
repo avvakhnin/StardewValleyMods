@@ -8,11 +8,11 @@ namespace AcidicNic.SpecialOrdersAnywhere {
         public SButton CycleLeftKey { get; set; } = SButton.OemOpenBrackets;
         public SButton CycleRightKey { get; set; } = SButton.OemCloseBrackets;
 
-        public bool enableJournal { get; set; } = false;
         public bool enableCalendar { get; set; } = true;
         public bool enableDailyQuests { get; set; } = true;
         public bool enableSpecialOrders { get; set; } = true;
         public bool enableQiSpecialOrders { get; set; } = true;
+        public bool enableJournal { get; set; } = false;
 
         public bool SpecialOrdersBeforeUnlocked { get; set; } = false;
         public bool QiBeforeUnlocked { get; set; } = false;

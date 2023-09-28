@@ -36,11 +36,6 @@ namespace AcidicNic.SpecialOrdersAnywhere {
                 mod: this.ModManifest,
                 text: () => "Control Settings"
             );
-            // keybind desc
-            configMenu.AddParagraph(
-                mod: this.ModManifest,
-                text: () => "Use `Toggle Menu Key` to open the first menu in the cycle. Use `Next Menu Key` or `Prev Menu Key` to cycle to the next or previous menu."
-            );
             // activate key config
             configMenu.AddKeybind(
                 mod: this.ModManifest,
@@ -112,7 +107,7 @@ namespace AcidicNic.SpecialOrdersAnywhere {
             // enable journal bool config
             configMenu.AddBoolOption(
                 mod: this.ModManifest,
-                name: () => "Enable Journal",
+                name: () => "Journal",
                 tooltip: () => "Includes the 'Journal' in the menu cycle. (Default: false)",
                 getValue: () => this.Config.enableJournal,
                 setValue: value => this.Config.enableJournal = value
