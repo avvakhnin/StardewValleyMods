@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using StardewModdingAPI;
 using StardewModdingAPI.Utilities;
 
@@ -13,6 +13,12 @@ namespace AcidicNic.SpecialOrdersAnywhere {
         public bool enableSpecialOrders { get; set; } = true;
         public bool enableQiSpecialOrders { get; set; } = true;
         public bool enableJournal { get; set; } = false;
+
+
+        public bool enableRSVVillageDailyQuests { get; set; } = true;
+        public bool enableRSVNinjaDailyQuests { get; set; } = true;
+        public bool enableRSVTownSpecialOrder { get; set; } = true;
+        public bool enableRSVNinjaSpecialOrder { get; set; } = true;
 
         public bool SpecialOrdersBeforeUnlocked { get; set; } = false;
         public bool QiBeforeUnlocked { get; set; } = false;
@@ -33,6 +39,15 @@ namespace AcidicNic.SpecialOrdersAnywhere {
                 this.MenuLen++;
             if (enableQiSpecialOrders)
                 this.MenuLen++;
+            if (enableRSVVillageDailyQuests)
+                this.MenuLen++;
+            if (enableRSVNinjaDailyQuests)
+                this.MenuLen++;
+            if (enableRSVTownSpecialOrder)
+                this.MenuLen++;
+            if (enableRSVNinjaSpecialOrder)
+                this.MenuLen++;
         }
     }
 }
+

@@ -6,5 +6,12 @@
   "UniqueID": "acidicNic.SpecialOrdersAnywhere",
   "EntryDll": "SpecialOrdersAnywhere.dll",
   "MinimumApiVersion": "3.0.0",
-  "UpdateKeys": [ "Nexus:7588" ]
+  "UpdateKeys": [ "Nexus:7588" ],
+  "Dependencies": [
+    {
+      "UniqueID": "Rafseazz.RidgesideVillage",
+      "IsRequired": true
+    }
+  ]
+
 }
